@@ -28,9 +28,13 @@ int main(void)
 	
     while (1) 
     {
-		if(!(PINC & (1 << 0)))
+		if(!(PINC & (1 << 1)))
 		{
 			PORTD |= (1 << 6);
+		}
+		if(PINC & (1 << 2))
+		{
+			PORTD |= (1 << 7);
 		}
 		
 		PORTD |= (1 << 5);
@@ -38,7 +42,7 @@ int main(void)
 		PORTD &=~ (1 << 5);
 		_delay_ms(500);
 		
-		PORTD &= ~(1 << 6);
+		PORTD &= ~((1 << 6)|(1 << 7));
     }
 }
 
